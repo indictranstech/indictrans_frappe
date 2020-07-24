@@ -38,7 +38,7 @@ def check_user_tags(dt):
 
 @frappe.whitelist()
 def add_tag(tag, dt, dn, color=None):
-	"adds a new tag to a record, and creates the Tag master"
+	"adds a new tag to a record, and creates the Tag main"
 	DocTags(dt).add(dn, tag)
 
 	return tag

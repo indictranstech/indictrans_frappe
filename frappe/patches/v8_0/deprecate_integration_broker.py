@@ -10,7 +10,7 @@ def execute():
 	
 	frappe.reload_doc("core", "doctype", "payment_gateway")
 	update_doctype_module()
-	create_payment_gateway_master_records()
+	create_payment_gateway_main_records()
 
 	for doctype in ["Integration Service", "Integration Service Parameter"]:
 		frappe.delete_doc("DocType", doctype)
@@ -35,7 +35,7 @@ def update_doctype_module():
 
 	frappe.db.sql(""" update tabDocType set module='Core' where name = 'Payment Gateway'""")
 
-def create_payment_gateway_master_records():
+def create_payment_gateway_main_records():
 	for payment_gateway in ["Razorpay", "PayPal"]:
 		doctype = "{0} Settings".format(payment_gateway)
 		doc = frappe.get_doc(doctype)
